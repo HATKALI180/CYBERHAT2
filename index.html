@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الأمن السيبراني</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* إعدادات أساسية للموقع */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #004d99;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        header p {
+            font-size: 18px;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #004d99;
+            font-size: 28px;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 22%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card .icon {
+            font-size: 50px;
+            color: #004d99;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #004d99;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0066cc;
+        }
+
+        /* تصميم نافذة منبثقة */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-content h3 {
+            color: #004d99;
+            margin-bottom: 20px;
+        }
+
+        .popup-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .close-btn:hover {
+            background-color: #ff3333;
+        }
+
+        /* تحسين تصميم الخريطة */
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .services-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                width: 80%;
+                margin: 20px 0;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+
+            .popup-content {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>موقع الأمن السيبراني</h1>
+    <p>حماية المعلومات والأنظمة من التهديدات الإلكترونية</p>
+</header>
+
+<nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#services">الخدمات</a>
+    <a href="#about">عن الموقع</a>
+    <a href="#contact">اتصل بنا</a>
+</nav>
+
+<section id="home">
+    <h2>مرحبا بك في موقعنا</h2>
+    <p>نحن هنا لنوفر لك معلومات وحلول حول كيفية حماية الأنظمة من التهديدات الإلكترونية. تعرف على أهم المبادئ والطرق للوقاية من الهجمات السيبرانية.</p>
+</section>
+
+<section id="services">
+    <h2>خدماتنا</h2>
+    <div class="services-container">
+        <div class="service-card" onclick="openPopup('help')">
+            <i class="fas fa-phone-alt icon"></i>
+            <h3>طلب المساعدة</h3>
+            <p>الحصول على استشارة أو مساعدة.</p>
+        </div>
+        <div class="service-card" onclick="openPopup('vulnerabilities')">
+            <i class="fas fa-search icon"></i>
+            <h3>تحليل الثغرات الأمنية</h3>
+            <p>تحليل أنظمتك واكتشاف الثغرات.</p>
+        </div>
+        <div class="service-card" onclick="openPopup('training')">
+            <i class="fas fa-graduation-cap icon"></i>
+            <h3>دورات تدريبية</h3>
+            <p>دورات متخصصة في الأمن السيبراني.</p>
+        </div>
+        <div class="service-card" onclick="openPopup('cybercrime')">
+            <i class="fas fa-user-shield icon"></i>
+            <h3>حل الجرائم الإلكترونية والابتزاز</h3>
+            <p>نحن نقدم حلولاً فعالة لمكافحة الجرائم الإلكترونية وحالات الابتزاز.</p>
+        </div>
+        <div class="service-card" onclick="openPopup('consultation')">
+            <i class="fas fa-lock icon"></i>
+            <h3>استشارات أمن سيبراني</h3>
+            <p>استشارات متخصصة لتحسين أمان أنظمتك وحمايتها من التهديدات.</p>
+        </div>
+        <div class="service-card" onclick="openPopup('freefire')">
+            <i class="fas fa-gamepad icon"></i>
+            <h3>سكربتات فري فاير</h3>
+            <p>احصل على سكربتات مميزة للعبة فري فاير.</p>
+        </div>
+    </div>
+</section>
+
+<!-- نافذة منبثقة لطلب المساعدة -->
+<div id="popup-help" class="popup">
+    <div class="popup-content">
+        <h3>للتواصل معنا</h3>
+        <p>رقم الهاتف: <strong>7235 9892</strong></p>
+        <p>حساب إنستغرام: <strong>@cy_hak66</strong></p>
+        <button class="close-btn" onclick="closePopup()">إغلاق</button>
+    </div>
+</div>
+
+<!-- نافذة منبثقة لتحليل الثغرات الأمنية -->
+<div id="popup-vulnerabilities" class="popup">
+    <div class="popup-content">
+        <h3>تحليل الثغرات الأمنية</h3>
+        <p>نقوم بتحليل الأنظمة لاكتشاف الثغرات الأمنية والعمل على تصحيحها لضمان أمان بياناتك.</p>
+        <p>رقم الهاتف: <strong>7235 9892</strong></p>
+        <button class="close-btn" onclick="closePopup()">إغلاق</button>
+    </div>
+</div>
+
+<!-- نافذة منبثقة للدورات التدريبية -->
+<div id="popup-training" class="popup">
+    <div class="popup-content">
+        <h3>الدورات التدريبية</h3>
+        <p>نقدم دورات تدريبية متخصصة في مجال الأمن السيبراني لجميع المهتمين بالتعلم والتطوير في هذا المجال.</p>
+        <p>رقم الهاتف: <strong>7235 9892</strong></p>
+        <button class="close-btn" onclick="closePopup()">إغلاق</button>
+    </div>
+</div>
+
+<!-- نافذة منبثقة لحل الجرائم الإلكترونية -->
+<div id="popup-cybercrime" class="popup">
+    <div class="popup-content">
+        <h3>حل الجرائم الإلكترونية والابتزاز</h3>
+        <p>نحن نقدم حلولاً فعالة لمكافحة الجرائم الإلكترونية وحالات الابتزاز وحماية بياناتك الشخصية.</p>
+        <p>رقم الهاتف: <strong>7235 9892</strong></p>
+        <button class="close-btn" onclick="closePopup()">إغلاق</button>
+    </div>
+</div>
+
+<!-- نافذة منبثقة لاستشارات الأمن السيبراني -->
+<div id="popup-consultation" class="popup">
+    <div class="popup-content">
+        <h3>استشارات أمن سيبراني</h3>
+        <p>نقدم استشارات متخصصة لتحسين أمان أنظمتك وحمايتها من التهديدات.</p>
+        <p>رقم الهاتف: <strong>7235 9892</strong></p>
+        <button class="close-btn" onclick="closePopup()">إغلاق</button>
+    </div>
+</div>
+
+<!-- نافذة منبثقة لسكربتات فري فاير -->
+<div id="popup-freefire" class="popup">
+    <div class="popup-content">
+        <h3>سكربتات فري فاير</h3>
+        <p>رقم الهاتف: <strong>4024 9937</strong></p>
+        <p>تواصل معنا للحصول على سكربتات مميزة لزيادة متعة اللعب.</p>
+        <button class="close-btn" onclick="closePopup()">إغلاق</button>
+    </div>
+</div>
+
+<section id="about">
+    <h2>عن الموقع</h2>
+    <p>موقعنا هو مصدر شامل للمعلومات والحلول في مجال الأمن السيبراني. هدفنا هو تعليم الأفراد والشركات كيفية حماية بياناتهم وأنظمتهم من الهجمات والتهديدات الإلكترونية المتزايدة.</p>
+</section>
+
+<section id="contact">
+    <h2>اتصل بنا</h2>
+    <p>هل لديك أسئلة أو ترغب في الحصول على استشارة؟ نحن هنا للمساعدة. املأ النموذج أدناه وسنرد عليك في أقرب وقت ممكن.</p>
+</section>
+
+<footer>
+    <p>&copy; 2025 جميع الحقوق محفوظة لموقع الأمن السيبراني</p>
+</footer>
+
+<script>
+    // فتح نافذة منبثقة
+    function openPopup(service) {
+        document.getElementById('popup-' + service).style.display = 'flex';
+    }
+
+    // إغلاق النافذة المنبثقة
+    function closePopup() {
+        var popups = document.querySelectorAll('.popup');
+        popups.forEach(function(popup) {
+            popup.style.display = 'none';
+        });
+    }
+</script>
+
+</body>
+</html>
